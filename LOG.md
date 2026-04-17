@@ -1,0 +1,40 @@
+# Project Log
+
+- Reviewed the project structure and setup for WashLogs backend.
+- Verified that the backend application adheres to the architecture specified in `README.md`.
+- Executed codebase audit and generated `audit_report.md` detailing bugs, duplicate files, and test configuration issues.
+- Updated all the documentations per user request: abstracted sections into `FAQ.md`, `DEPLOYMENT.md`, `ARCHITECTURE.md`, updated `README.md`, appended entries to `PROMPTS.md` and `STEP_APPROACH.md`, and finalized `AUDIT.md`.
+- Fixed broken markdown table structure inside `PROMPTS.md` and replaced raw table rows in `STEP_APPROACH.md` with URL anchors.
+- Rewrote `API.md` completely adopting tabular layouts exclusively for better developer experience readability. 
+- Repaired `main.py` invalid router import pointer.
+- Implemented `Supabase Authentication` and bound it to all fastAPI routers as JWT bearer dependency checking. Updated `AUDIT.md` to flag these as resolved.
+- Eliminated redundant `supabase/database.py` code deduplicating the codebase.
+- Formulated an isolated `conftest.py` setting dummy `os.environ` settings paired with dependency bypass logic to successfully test Pydantic `Settings` blocks.
+- Regenerated `AUDIT.md` closing out all tracked errors. Modified `STEP_APPROACH.md` alongside `PROMPTS.md` registering the modifications natively.
+- Evaluated backend tests (`pytest`). Discovered and repaired `TypeError: LoggingMiddleware.__call__() missing 1 required positional argument: 'call_next'` by converting the AI's naive middleware bindings to robust `BaseHTTPMiddleware` classes natively supported by Starlette ASGI wrappers.
+- Redesigned `README.md` introducing sweeping contexts outlining the holistic feature set, `AI Usage Report` spanning LLM failures and scaling successes, paired against clear tradeoff markers limiting further local scaling.
+- Verified `.env` configuration integrity. Identified missing required fields (`SUPABASE_SERVICE_KEY`, `DATABASE_URL`) and unauthorized field (`SUPABASE_PROJECT_ID`) causing Pydantic validation failures.
+- Updated `backend/src/config/settings.py` to include `supabase_project_id` and permit extra fields to prevent startup crashes when additional environment variables are present.
+- Configured default `DATABASE_URL` in `.env` to point to the local `washlogs.db` and added a placeholder for `SUPABASE_SERVICE_KEY`.
+- Executed the backend application via `uvicorn`. Verified startup but identified a `UnicodeEncodeError` in Windows console logging and an "Invalid API key" error for Supabase.
+- Updated `AUDIT.md` registering invalid credentials and encoding issues as active bugs.
+- Refactored `.env` to keep only essential variables and adopted standard naming conventions (e.g., `HOST`, `PORT`, `SUPABASE_ANON_KEY`).
+- Sychronized `Settings` model, `main.py`, `database.py`, and `conftest.py` with the new environment variable schema. 
+- Verified successful backend startup with the new configuration.
+- Diagnosed `TypeError: Client.__init__() got an unexpected keyword argument 'proxy'` as a dependency conflict in the `supabase-py` stack. 
+- Mass-upgraded the backend dependencies (`fastapi`, `supabase`, `httpx`, `websockets`, `anyio`) to a consistent and verified working version set.
+- Replaced special character emojis (`✓`) in logging with ASCII strings (`[SUCCESS]`) to ensure Windows terminal compatibility.
+- Confirmed successful cloud-mode connectivity with the latest user-provided credentials. Updated `AUDIT.md` to flag all backend bugs as resolved.
+- Planned and orchestrated a React + Vite frontend scaffolding utilizing Vanilla CSS to mimic physical "skeuomorphic" design systems under a greenish color scale.
+- Wired up Supabase Authentication mapping to a local `AuthContext` to secure application subroutes (`/dashboard`, `/orders`).
+- Implemented a structured component library: convex buttons, concave inputs, and raised cards.
+- Built corresponding Views integrating with the FastAPI backend through a Vite proxy network ensuring local CORS pass-throughs.
+- Diagnosed and resolved "Internal Server Error" issue on the backend caused by a corrupted AnyIO package installation state due to version mismatch.
+- Re-installed AnyIO to version 4.13.0 utilizing `--force-reinstall`, resolving the `set_current_async_library` Import Error traversing down from Starlette middleware exceptions.
+- Patched automated tests dropping in a `StaticPool` layer resolving SQLite memory segregation bugs across different local session instances.
+- Re-architected Pydantic RequestValidation error JSON serialization natively supporting complex Python objects escaping through `jsonable_encoder`.
+- Initialized frontend `Signup` view and synchronized `react-router-dom` links scaling out the authentication scope beyond login placeholders.
+- Gracefully terminated backend and frontend development servers per user request.
+- Resolved `UnicodeEncodeError` in Windows console logging by replacing Unicode arrows (`->`, `<-`) with ASCII equivalents (`->`, `<-`) in the middleware stack.
+- Finalized documentation updates across `LOG.md`, `PROMPTS.md`, and `STEP_APPROACH.md`.
+- Created Root `.gitignore` to protect sensitive environment variables, dependencies, and local databases.

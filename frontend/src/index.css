@@ -1,0 +1,77 @@
+:root {
+  /* Greenish Theme Palette */
+  --bg-color: #e3ebe1;
+  --surface-color: #eef5ec;
+  --primary-color: #2e7d32;
+  --primary-color-dark: #1b5e20;
+  --text-main: #1e3621;
+  --text-muted: #4a684c;
+  --error: #b71c1c;
+
+  /* Skeuomorphic Constants */
+  --shadow-light: #ffffff;
+  --shadow-dark: #b8c9b5;
+
+  /* Typographic Constants */
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text-main);
+  background-color: var(--bg-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
+}
+
+/* Skeuomorphic Utility Classes */
+
+.convex {
+  background: var(--surface-color);
+  box-shadow: 
+    4px 4px 8px var(--shadow-dark), 
+    -4px -4px 8px var(--shadow-light);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.convex:active, .convex.pressed {
+  box-shadow: 
+    inset 4px 4px 8px var(--shadow-dark), 
+    inset -4px -4px 8px var(--shadow-light);
+}
+
+.concave {
+  background: var(--surface-color);
+  box-shadow: 
+    inset 3px 3px 6px var(--shadow-dark), 
+    inset -3px -3px 6px var(--shadow-light);
+  border-radius: 8px;
+  border: none;
+}
+
+/* Base Typographic helpers */
+h1, h2, h3, h4, h5 {
+  color: var(--primary-color-dark);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  text-shadow: 1px 1px 0px rgba(255,255,255,0.7);
+}
+
+p {
+  color: var(--text-muted);
+}
