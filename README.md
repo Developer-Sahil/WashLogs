@@ -1,11 +1,12 @@
 # WashLogs
 
-WashLogs is a fully-featured, production-ready backend designed as an order management system for laundry and dry-cleaning services. Built specifically for clean architecture, scalability, and robust deployment.
+WashLogs is a full-stack, production-ready SaaS application for laundry and dry-cleaning order management. It features a robust FastAPI backend and a beautiful, skeuomorphic React frontend.
 
 ## 🚀 Setup Instructions
 
 ### Prerequisites
 - Python 3.11+
+- Node.js 18+
 - PostgreSQL 12+ (or use Supabase directly)
 - Docker & Docker Compose (optional for containerization)
 
@@ -13,23 +14,44 @@ WashLogs is a fully-featured, production-ready backend designed as an order mana
 1. **Clone the repository**
    ```bash
    git clone <repository_url>
-   cd backend
+   cd washlogs
    ```
-2. **Create a virtual environment & install dependencies**
+2. **Setup Backend**
    ```bash
+   cd backend
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    pip install -r requirements.txt
    ```
 3. **Configure the environment**
-   Create a `.env` file from the sample and populate your API keys (like Supabase Auth tokens and Database URLs):
+   Create a `.env` file in the `backend/` directory:
    ```bash
-   cp .env.example .env
+   SUPABASE_URL=your_url
+   SUPABASE_ANON_KEY=your_key
+   DATABASE_URL=sqlite:///washlogs.db
    ```
-4. **Run the server**
+
+4. **Run the Backend**
    ```bash
-   python -m uvicorn src.main:app --reload --host 0.0.0.0 --port 8000
+   cd backend
+   python -m uvicorn src.main:app --reload
    ```
+
+### Frontend Setup
+1. **Navigate to frontend directory**
+   ```bash
+   cd frontend
+   ```
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+   > The app will be available at `http://localhost:5173`. It is configured to proxy API requests to `http://localhost:8000`.
+
    > Head to `http://localhost:8000/api/docs` to test the API directly using Swagger UI!
 
 ### Docker Setup
@@ -42,12 +64,13 @@ WashLogs is a fully-featured, production-ready backend designed as an order mana
 ---
 
 ## ✨ Features Implemented (What Works)
-- **Order Flow System**: End-to-end capabilities to fully `Create`, `Track`, `Update Status`, and `Delete` specific clothing orders efficiently.
-- **Dynamic Billing**: Quantity and per-item pricing scale natively within the service layer to create reliable invoice tracking.
-- **Reporting & Dashboards**: View historical analytics filtering down total global revenue, order status counts, and historical transaction logs natively without redundant database queries.
-- **Authentication**: JWT capabilities actively linked with the **Supabase Auth API** natively injected to gate your web components securely via Bearer Tokens automatically.
-- **Reliable SQL Schemas**: Fully implemented SQLAlchemy interactions mirroring your local Supabase PostgreSQL models across `orders` and `order_items`.
-- **Advanced Documentations**: Segmented technical documentation encompassing endpoints, error handling, system architectures (`docs/ARCHITECTURE.md`), and debugging FAQs.
+- **Skeuomorphic UI**: Premium, tactile design system built with Vanilla CSS, featuring 3D buttons, recessed inputs, and a custom greenish theme.
+- **Order Flow System**: End-to-end capabilities to `Create`, `Track`, `Update Status`, and `Delete` orders.
+- **Dynamic Ledger**: Interactive orders ledger with real-time status updates and order management.
+- **Analytics Dashboard**: Visual business insights including total revenue, active orders, and status distribution.
+- **Secured Authentication**: Full Login/Signup flow powered by Supabase Auth, gating all application routes.
+- **Robust Backend**: RESTful API with FastAPI, SQLAlchemy ORM, and comprehensive error handling.
+- **Modern Documentation**: Structured technical docs for API, Architecture, and Deployment.
 
 ---
 
@@ -81,10 +104,9 @@ WashLogs is a fully-featured, production-ready backend designed as an order mana
 ## ⚖️ Tradeoffs
 
 ### What We Skipped
-1. **Frontend Repository**: To limit complexity, React components mapping the actual dashboard are not fully implemented/audited as part of this scope.
-2. **Third-Party Payment Systems**: Calculating invoices is mocked inside local models; integrated Stripe/Razorpay solutions are omitted.
-3. **Role-Based Access Control (RBAC)**: All user tokens evaluate globally; admin vs user scopes are currently skipped.
-4. **Rate Limiting**: Native backend request limiting drops under scale.
+1. **Third-Party Payment Systems**: Calculating invoices is handled internally; Stripe/Razorpay integrations are omitted for this version.
+2. **Role-Based Access Control (RBAC)**: All authenticated users have full access; role-level permissions are skipped.
+3. **Mobile Native App**: This is a progressive web application (PWA) ready design, but native iOS/Android builds are not included.
 
 ### What We'd Improve With More Time
 1. Transition static REST updates spanning the dashboard metrics directly to bidirectional **WebSockets** for real-time frontend updates. 

@@ -36,3 +36,7 @@ Steps taken to create the WashLogs system:
 
 17. Established a global `.gitignore` at the repository root to safeguard environment secrets and prevent redundant versioning of `node_modules`, `venv`, and local database files. *(See **Prompt 13** in [PROMPTS.md](PROMPTS.md))*
 
+18. Initialized the Git ecosystem, configured the remote origin, and performed the initial commit/push to synchronize the full software lifecycle with GitHub. *(See **Prompt 14** in [PROMPTS.md](PROMPTS.md))*
+
+19. Pivoted all system documentation (`README`, `Architecture`, `Deployment`) to a full-stack context, ensuring frontend setup, design philosophy, and Vercel deployment paths are accurately represented alongside existing backend logic. *(See **Prompt 15** in [PROMPTS.md](PROMPTS.md))*
+

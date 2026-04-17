@@ -24,6 +24,23 @@
      --set-env-vars DATABASE_URL=$DATABASE_URL,SUPABASE_URL=$SUPABASE_URL
    ```
 
+### Vercel (Frontend)
+
+1. **Install Vercel CLI**
+   ```bash
+   npm i -g vercel
+   ```
+
+2. **Deploy**
+   ```bash
+   cd frontend
+   vercel
+   ```
+
+3. **Configure Environment Variables in Vercel Dashboard**
+   - `VITE_SUPABASE_URL`: Your Supabase URL
+   - `VITE_SUPABASE_ANON_KEY`: Your Supabase Anon Key
+
 ### Environment Setup for Production
 
 ```env

@@ -2,50 +2,20 @@
 
 This document covers the technology choices, project directories, and database schemas for the WashLogs system.
 
-## 🛠️ Tech Stack
-- **Framework**: FastAPI 0.104+
-- **Database**: PostgreSQL (via Supabase)
-- **ORM**: SQLAlchemy
-- **Auth**: Supabase Authentication
-- **Validation**: Pydantic V2
-- **Server**: Uvicorn
-- **Containerization**: Docker & Docker Compose
-- **Testing**: Pytest
+### Backend
+- **Framework**: FastAPI 0.136.0
+- **Language**: Python 3.12+
+- **Database**: PostgreSQL (Supabase) + SQLite (Dev/Test)
+- **ORM**: SQLAlchemy 2.0
+- **Auth**: Supabase JWT
 
-## 📁 System Architecture / Project Structure
-```text
-backend/
-├── src/
-│   ├── __init__.py
-│   ├── main.py                 # FastAPI app entry point
-│   ├── config/
-│   │   ├── __init__.py
-│   │   ├── settings.py         # Configuration & environment
-│   │   └── database.py         # Database initialization
-│   ├── models/
-│   │   ├── __init__.py
-│   │   ├── schemas.py          # Pydantic models (API validation)
-│   │   └── database.py         # SQLAlchemy models (DB schema)
-│   ├── services/
-│   │   ├── __init__.py
-│   │   └── order_service.py    # Business logic
-│   ├── routes/
-│   │   ├── __init__.py
-│   │   └── order_controller.py # API endpoints/routes
-│   ├── middleware/
-│   │   ├── __init__.py
-│   │   └── error_handler.py    # Error handling & logging
-│   └── utils/
-│       ├── __init__.py
-│       └── helpers.py          # Utility functions
-├── tests/
-│   └── test_api.py             # API tests
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-├── .env.example
-└── README.md
-```
+### Frontend
+- **Library**: React 18
+- **Build Tool**: Vite
+- **Styling**: Vanilla CSS (Skeuomorphic Design System)
+- **Networking**: Axios + Vite Proxy
+- **State Management**: React Context API (Auth)
+
 
 ## 💾 Database Schema
 
