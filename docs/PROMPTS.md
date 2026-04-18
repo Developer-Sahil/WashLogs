@@ -17,3 +17,5 @@
 | 13 | Gemini 3 Flash | "add gitignore" | "Define standard exclusion patterns for environment variables, dependency folders, and transient build artifacts." |
 | 14 | Gemini 3 Flash | "https://github.com/Developer-Sahil/WashLogs.git add and push to this repo initilize first" | "Execute the first system-wide deployment to version control, bridging the local workspace with the remote repository." |
 | 15 | Gemini 3 Flash | "update the documentations not only for backend but also for frontend" | "Perform a total documentation audit, pivoting the system perspective from backend-only to a holistic full-stack application overview." |
+| 17 | Gemini 3 Flash | "push toh github with note - Final submission - WashLogs complete project as commit" | "Final submission and push to the remote repository." |
+| 16 | Gemini 3 Flash | ".env.example is not complete yet" | "Completed the .env.example file with all required variables." |

@@ -40,3 +40,6 @@ Steps taken to create the WashLogs system:
 
 19. Pivoted all system documentation (`README`, `Architecture`, `Deployment`) to a full-stack context, ensuring frontend setup, design philosophy, and Vercel deployment paths are accurately represented alongside existing backend logic. *(See **Prompt 15** in [PROMPTS.md](PROMPTS.md))*
 
+20. Completed the `.env.example` files for both `backend/` and `frontend/` with all required environment variables, providing a clear template for local environment configuration and Supabase integration. *(See **Prompt 16** in [PROMPTS.md](PROMPTS.md))*
+
+21. Synchronized all remaining documentation and performed the final project submission by pushing the entire codebase to GitHub. *(See **Prompt 17** in [PROMPTS.md](PROMPTS.md))*
